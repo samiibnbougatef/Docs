@@ -1,0 +1,11 @@
+
+server:
+  persistentVolume:
+    accessModes:
+    - ReadWriteMany
+    size: 4Gi
+alertmanager:
+  persistence:
+    accessModes:
+    - ReadWriteMany
+    size: 2Gi

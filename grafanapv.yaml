@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grafana
+spec:
+  hostPath:
+    path: /mnt/grafana
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteMany

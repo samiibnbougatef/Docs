@@ -1,0 +1,29 @@
+adminPassword: admin
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteMany
+initChownData:
+  enabled: false
+grafana.ini:
+  smtp:
+    enabled: true
+    host: smtp.gmail.com:465
+    user: samibougatef408@gmail.com
+    skip_verify: false
+    from_address: samibougatef408@gmail.com
+    from_name: Sami Bougatef
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.monitoring.svc.cluster.local
+        access: proxy
+        isDefault: true
+sidecar:
+  alerts:
+    enabled: true
+  notifiers:
+    enabled: true
