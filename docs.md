@@ -146,19 +146,37 @@
    <br>
    ```
    kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
    ```
  * Calico
    <br>
    ```
     kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/canal.yaml 
+
    ```
-# Install Helm 
+# Helm 
+ * Install Helm with script  
+   <br> 
+   ```
+   curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/  helm/helm/main/scripts/get-helm-3
+   chmod 700 get_helm.sh
+   ./get_helm.sh
+   ```
+
+ * Install Prometheus 
    <br>
    ```
-    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/ helm/helm/main/scripts/get-helm-3
-    chmod 700 get_helm.sh
-    ./get_helm.sh
+   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   helm repo update
+   kubectl create ns monitoring
+   helm install my-prometheus prometheus-community/prometheus -n monitoring     
    ```
+ * Install Grafana 
+   <br>
+   ```
+   helm repo add grafana https://grafana.github.io/helm-charts
+   helm repo update 
+   helm install my-grafana grafana/grafana -n monitoring  
                 
 
    
