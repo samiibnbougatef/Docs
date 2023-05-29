@@ -100,3 +100,30 @@
   sudo apt-get update
   sudo apt-get install -y kubelet=1.26.2-00 kubeadm=1.26.2-00 kubectl=1.26.2-00
   sudo apt-mark hold kubelet kubeadm kubectl
+* Initializing your control-plane node
+  <br>
+  ```
+  kubeadm init --pod-network-cidr=10.244.0.0/16
+  ```
+  ```
+  Your Kubernetes control-plane has initialized successfully!
+
+  To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+  You should now deploy a Pod network to the cluster.
+  Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  /docs/concepts/cluster-administration/addons/
+
+  You can now join any number of machines by running the following on each node
+  as root:
+
+  kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+  
+* Installing Addons Weave Net
+  <br> 
+  ```
+  kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml   
