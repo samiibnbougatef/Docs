@@ -92,7 +92,7 @@
 * Add the Kubernetes apt repository  
   <br>
   ```
-  sudo apt-add-repository echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
+  sudo apt-add-repository  "deb https://apt.kubernetes.io/ kubernetes-xenial main"
 
 * Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
   <br>
