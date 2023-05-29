@@ -4,6 +4,7 @@
    ```
     sudo apt-get update
     sudo apt-get install ca-certificates curl gnupg
+    ```
     
  * Add the official GPG key  
    <br>
@@ -11,6 +12,7 @@
    sudo install -m 0755 -d /etc/apt/keyrings
    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   ```
 
  * Add the key to repository
    <br>  
@@ -19,16 +21,19 @@
     "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    ```
 
  * Update the apt package
     <br>  
     ```
     sudo apt-get update
+    ```
       
 * Installing Containerd
     <br> 
    ```
     sudo apt-get install containerd.io 
+    ```
 
 * Configuring the systemd cgroup driver
   
@@ -38,10 +43,12 @@
    [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
       [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
        SystemdCgroup = true
+   ```    
 * Restart the containerd
   <br> 
   ```
   sudo systemctl restart containerd      
+  ```
 
 # kubernetes Cluster v1.26.2
 * Forwarding IPv4 and letting iptables see bridged traffic
@@ -63,36 +70,43 @@
   EOF
   # Apply sysctl params without reboot
   sudo sysctl --system
+  ```
 * Verify that the br_netfilter, overlay modules are loaded
   <br>
   ```
   lsmod | grep br_netfilter
   lsmod | grep overlay
+  ```
 * Verify that the net.bridge.bridge-nf-call-iptables, net.bridge.bridge-nf-call-ip6tables, and net.ipv4.ip_forward system variables are set to 1 in your sysctl config
   <br>
   ```
   sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+  ```
 * Disable Swap
   <br>
   ```
   sudo swapoff -a
   sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+  ```
 
 * install packages needed to use the Kubernetes
   <br>
   ```
   sudo apt-get update
   sudo apt-get install -y apt-transport-https ca-certificates curl
+  ```
 
 * Google Cloud public signing key
   <br>
   ```
   sudo curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -  
+  ```
   
 * Add the Kubernetes apt repository  
   <br>
   ```
   sudo apt-add-repository  "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+  ```
 
 * Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
   <br>
@@ -100,6 +114,7 @@
   sudo apt-get update
   sudo apt-get install -y kubelet=1.26.2-00 kubeadm=1.26.2-00 kubectl=1.26.2-00
   sudo apt-mark hold kubelet kubeadm kubectl
+  ```
 * Initializing your control-plane node
   <br>
   ```
@@ -122,6 +137,7 @@
   as root:
 
   kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+  ```
 
 ## Installing Addons 
  * Weave Net
@@ -177,6 +193,7 @@
    helm repo add grafana https://grafana.github.io/helm-charts
    helm repo update 
    helm install my-grafana grafana/grafana -n monitoring  
+   ```
                 
 
    
