@@ -42,11 +42,12 @@
     sudo apt-get install ca-certificates curl gnupg
     
  * Add the official GPG key  
-  <br>
+   <br>
    ```  
    sudo install -m 0755 -d /etc/apt/keyrings
    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-   sudo chmod a+r /etc/apt/keyrings/docker.gpg   
+   sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
  * Add the key to repository
    <br>  
    ```
@@ -54,10 +55,12 @@
     "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
  * Update the apt package
     <br>  
     ```
-    sudo apt-get update  
+    sudo apt-get update
+      
 * Installing Containerd
     <br> 
    ```
