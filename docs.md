@@ -169,7 +169,7 @@
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
    helm repo update
    kubectl create ns monitoring
-   helm install my-prometheus prometheus-community/prometheus -n monitoring     
+   helm install my-prometheus prometheus-community/prometheus -n monitoring --set alertmanager.enabled=false     
    ```
  * Install Grafana 
    <br>
