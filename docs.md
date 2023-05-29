@@ -142,6 +142,19 @@
            env:
             - name: IPALLOC_RANGE
               value: 10.0.0.0/16
+ * Flannel
+   <br>
+   ```
+   kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+   ```
+ * Calico
+   <br>
+   ```
+    kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/canal.yaml 
+   ```
+
+
+                
 
    
   
