@@ -122,8 +122,27 @@
   as root:
 
   kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+
+## Installing Addons 
+ * Weave Net
+   <br> 
+   ```
+   kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml   
+   ```
+   If you do set the --cluster-cidr option on kube-proxy, make sure it matches the IPALLOC_RANGE given to Weave Net:
+   <br>
+   ```
+   kubectl edit  ds -n kube-system weave-net
+   ```
+   <br>
+   
+
+        containers:
+         - name: weave
+           env:
+            - name: IPALLOC_RANGE
+              value: 10.0.0.0/16
+
+   
   
-* Installing Addons Weave Net
-  <br> 
-  ```
-  kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml   
+ 
