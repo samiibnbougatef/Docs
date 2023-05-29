@@ -152,8 +152,13 @@
    ```
     kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/canal.yaml 
    ```
-
-
+# Install Helm 
+   <br>
+   ```
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/ helm/helm/main/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
+   ```
                 
 
    
