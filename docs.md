@@ -77,5 +77,26 @@
   ```
   sudo swapoff -a
   sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-* 
+
+* install packages needed to use the Kubernetes
+  <br>
+  ```
+  sudo apt-get update
+  sudo apt-get install -y apt-transport-https ca-certificates curl
+
+* Google Cloud public signing key
+  <br>
+  ```
+  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -  
   
+* Add the Kubernetes apt repository  
+  <br>
+  ```
+  sudo apt-add-repository echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg]
+
+* Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
+  <br>
+  ```
+  sudo apt-get update
+  sudo apt-get install -y kubelet=1.26.2-00 kubeadm=1.26.2-00 kubectl=1.26.2-00
+  sudo apt-mark hold kubelet kubeadm kubectl
