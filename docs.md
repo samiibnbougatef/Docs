@@ -87,12 +87,12 @@
 * Google Cloud public signing key
   <br>
   ```
-  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -  
+  sudo curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -  
   
 * Add the Kubernetes apt repository  
   <br>
   ```
-  sudo apt-add-repository echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg]
+  sudo apt-add-repository echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg]"
 
 * Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
   <br>
