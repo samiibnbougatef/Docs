@@ -11,6 +11,7 @@ grafana.ini:
     enabled: true
     host: smtp.gmail.com:465
     user: samibougatef408@gmail.com
+    password: enjqwfklobyoxcxy
     skip_verify: false
     from_address: samibougatef408@gmail.com
     from_name: Sami Bougatef
@@ -23,4 +24,6 @@ datasources:
         url: http://prometheus-server.monitoring.svc.cluster.local
         access: proxy
         isDefault: true
+service:
+  type: NodePort
 
