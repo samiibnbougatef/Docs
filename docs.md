@@ -194,9 +194,15 @@
    helm repo add grafana https://grafana.github.io/helm-charts
    helm repo update 
    helm install grafana grafana/grafana -n monitoring  -f grafana.yaml
-   kubectl apply -f grafanapv.yaml
+   kubectl apply -f grafanapv.yaml 
    ```
-                
+ * Access Permission for the local directories PVs
+   <br>
+   ```
+    sudo chmod 775 -R /mnt
+   ```  
+   Ps: you find the directories in the workers nodes
+ * Setup Gmail for the smtp                
 
    
   
