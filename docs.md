@@ -202,7 +202,16 @@
     sudo chmod 775 -R /mnt
    ```  
    Ps: you find the directories in the workers nodes
- * Setup Gmail for the smtp                
+   
+ * Setup Gmail for the Grafana notification
+
+    In order to use the "app password" option to generate a token for use in the Grafana config file, you typically need to activate 2-step verification for your email account.
+
+    Enabling 2-step verification adds an extra layer of security to your email account by requiring an additional verification step, usually through a mobile device or an authentication app, when logging in. Once you have 2-step verification set up, you can generate an "app password" specifically for use with third-party applications like Grafana.
+
+    Using an app password instead of your actual email password in the Grafana config file is considered best practice because it minimizes the risk of exposing your primary account credentials. The generated app password is a unique and separate password that is used solely for authenticating with the specific application or service (in this case, Grafana) and does not provide direct access to your main email account.
+
+    By following this approach, you can enhance the security of your email account while still allowing Grafana to authenticate and send notifications without using your primary email password directly.               
 
    
   
