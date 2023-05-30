@@ -185,14 +185,16 @@
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
    helm repo update
    kubectl create ns monitoring
-   helm install prometheus prometheus-community/prometheus -n monitoring     
+   helm install prometheus prometheus-community/prometheus -n monitoring -f prometheus.yaml
+   kubectl apply -f prometheuspv.yaml    
    ```
  * Install Grafana 
    <br>
    ```
    helm repo add grafana https://grafana.github.io/helm-charts
    helm repo update 
-   helm install grafana grafana/grafana -n monitoring  
+   helm install grafana grafana/grafana -n monitoring  -f grafana.yaml
+   kubectl apply -f grafanapv.yaml
    ```
                 
 
